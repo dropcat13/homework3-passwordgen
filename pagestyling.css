@@ -1,0 +1,38 @@
+body{
+    background: url(../homework3-passwordgen/assets/memphis-mini.png) no-repeat center center fixed;
+    background-repeat: repeat;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.container{
+    background-color: #e9eef7;
+    text-align: center;
+    padding: 20px;
+}
+
+.passwordbox{
+    background-color: white;
+    padding: 10px;
+}
+
+#generate{
+    border-radius: 18px;
+    padding: 10px;
+}
+
+#copy{
+    border-radius: 18px; 
+    padding: 10px;
+}
+
+#password{
+    padding: 10px;
+    width: 100%;
+    border: 2px dashed #e9eef7;
+    text-align: center; 
+}
+
+#generatetitle{
+    border-bottom: 2px solid #e9eef7;
+    text-align: left;
+}

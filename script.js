@@ -77,7 +77,8 @@ function selectArray () {
     
 // append the to the textarea? 
 function setPassword (){
-finalPassword.textContent = password
+finalPassword.innerHTML = password
+document.getElementById("password").innerHTML = finalPassword;
 }
 
 // event listener for click on clipboard button

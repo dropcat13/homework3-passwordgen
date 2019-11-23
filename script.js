@@ -160,4 +160,7 @@ copy.addEventListener("click", function(event){
     document.execCommand("copy");
   
     alert("Copied the text: " + copyText.value);
+    window.location.reload();
   });
+
+  

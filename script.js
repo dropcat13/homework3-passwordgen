@@ -2,12 +2,16 @@ var lcchars = "abcdefghijklmnopqrstuvwxyz".split("")
 var ucchars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")
 var nchars = "0123456789".split("")
 var schars = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~".split("")
-var mchars = [].concat(lcchars, ucchars, nchars, schars);
+var joinedArray;
 var generate = document.querySelector("#generate");
 var copy = document.querySelector("#copy");
 var userPasswordString = "password";
 var userLength;
 var userCharacters;
+var userCharactersLower;
+var userCharactersUpper;
+var userCharactersNumber;
+var userCharactersSpecial;
 var userPasswordLength;
 var finalPassword = "";
 
@@ -28,18 +32,24 @@ generate.addEventListener("click", function(){
             passwordLength();
         }
 
-    userCharacters = prompt("What type of letters do you want? Type 'l' for lowercase, 'u' for uppercase, 'n' for numbers, 's' for special or 'm' for a mixture.");
-        userCharacters = userCharacters.toLowerCase();    
-        if (userCharacters === "l" || userCharacters === "u" || userCharacters === "n" || userCharacters === "s" || userCharacters === "m") {
-            alert("Your Password is being generated");
-            console.log (userCharacters)
-            selectArray();
-            setPassword();
-            }
-        else{
-            alert("You must select an option");
-            prompt("What type of letters do you want? Type 'l' for lowercase, 'u' for uppercase, 'n' for numbers, 's' for special or 'm' for a mixture.");
-        }   
+    userCharactersLower = confirm("Do you want lower case letters?");  
+    userCharactersUpper = confirm("Do you want upper case letters?");
+    userCharactersNumber = confirm("Do you want numbers?");
+    userCharactersSpecial = confirm("Do you want special characters?");
+        
+    if (userCharactersLower || userCharactersUpper || userCharactersNumber || userCharactersSpecial === true) {
+        alert("Your Password is being generated");
+        selectArray();
+        setPassword();
+    }
+    
+    else{
+        alert("You must select an option");
+        userCharactersLower = confirm("Do you want lower case letters?");  
+        userCharactersUpper = confirm("Do you want upper case letters?");
+        userCharactersNumber = confirm("Do you want numbers?");
+        userCharactersSpecial = confirm("Do you want special characters?");
+    }   
 });
 
 // userLength to create a string array of a certain length 
@@ -50,35 +60,92 @@ function passwordLength (){
 
 function selectArray () {
    
-    if (userCharacters === "l") {
-       
+    if (userCharactersLower === true && userCharactersUpper !== true && userCharactersNumber !== true && userCharactersSpecial !== true) {  
         for (var i = 0; i < userPasswordLength; i++){
             finalPassword += lcchars[Math.floor(Math.random() * lcchars.length)];
             console.log("finalPassword", finalPassword);
         }
-    } else if (userCharacters === "u") {
+    } else if (userCharactersLower === true && userCharactersUpper === true && userCharactersNumber !== true && userCharactersSpecial !== true) {
+        for (var i = 0; i < userPasswordLength; i++){
+            var joinedArray = lcchars.concat(ucchars);
+            finalPassword += joinedArray[Math.floor(Math.random() * joinedArray.length)];
+            console.log("finalPassword", finalPassword);
+        }
+    } else if (userCharactersLower === true && userCharactersUpper === true && userCharactersNumber === true && userCharactersSpecial !== true) {
+        for (var i = 0; i < userPasswordLength; i++){
+            var joinedArray = lcchars.concat(ucchars, nchars);
+            finalPassword += joinedArray[Math.floor(Math.random() * joinedArray.length)];
+            console.log("finalPassword", finalPassword);
+        }
+    } else if (userCharactersLower === true && userCharactersUpper === true && userCharactersNumber !== true && userCharactersSpecial === true) {
+        for (var i = 0; i < userPasswordLength; i++){
+            var joinedArray = lcchars.concat(ucchars, schars);
+            finalPassword += joinedArray[Math.floor(Math.random() * joinedArray.length)];
+            console.log("finalPassword", finalPassword);
+        }
+    } else if (userCharactersLower === true && userCharactersUpper === true && userCharactersNumber === true && userCharactersSpecial === true) {
+        for (var i = 0; i < userPasswordLength; i++){
+            var joinedArray = lcchars.concat(ucchars, nchars, schars);
+            finalPassword += joinedArray[Math.floor(Math.random() * joinedArray.length)];
+            console.log("finalPassword", finalPassword);
+        }
+    } else if (userCharactersLower === true && userCharactersUpper !== true && userCharactersNumber === true && userCharactersSpecial !== true) {
+        for (var i = 0; i < userPasswordLength; i++){
+            var joinedArray = lcchars.concat(nchars);
+            finalPassword += joinedArray[Math.floor(Math.random() * joinedArray.length)];
+            console.log("finalPassword", finalPassword);
+        }
+    } else if (userCharactersLower === true && userCharactersUpper !== true && userCharactersNumber === true && userCharactersSpecial === true) {
+        for (var i = 0; i < userPasswordLength; i++){
+            var joinedArray = lcchars.concat(nchars, schars);
+            finalPassword += joinedArray[Math.floor(Math.random() * joinedArray.length)];
+            console.log("finalPassword", finalPassword);
+        }
+    } else if (userCharactersLower === true && userCharactersUpper !== true && userCharactersNumber !== true && userCharactersSpecial === true) {
+        for (var i = 0; i < userPasswordLength; i++){
+            var joinedArray = lcchars.concat(schars);
+            finalPassword += joinedArray[Math.floor(Math.random() * joinedArray.length)];
+            console.log("finalPassword", finalPassword);
+        }
+    } else if (userCharactersLower !== true && userCharactersUpper === true && userCharactersNumber !== true && userCharactersSpecial !== true) {
         for (var i = 0; i < userPasswordLength; i++){
             finalPassword += ucchars[Math.floor(Math.random() * ucchars.length)];
+            console.log("finalPassword", finalPassword);
         }
-    } else if (userCharacters === "n") {
+    } else if (userCharactersLower !== true && userCharactersUpper === true && userCharactersNumber === true && userCharactersSpecial !== true) {
+        for (var i = 0; i < userPasswordLength; i++){
+            var joinedArray = ucchars.concat(nchars);
+            finalPassword += joinedArray[Math.floor(Math.random() * joinedArray.length)];
+            console.log("finalPassword", finalPassword);
+        }
+    } else if (userCharactersLower !== true && userCharactersUpper === true && userCharactersNumber === true && userCharactersSpecial === true) {
+        for (var i = 0; i < userPasswordLength; i++){
+            var joinedArray = ucchars.concat(nchars, schars);
+            finalPassword += joinedArray[Math.floor(Math.random() * joinedArray.length)];
+            console.log("finalPassword", finalPassword);
+        }
+    } else if (userCharactersLower !== true && userCharactersUpper !== true && userCharactersNumber === true && userCharactersSpecial !== true) {
         for (var i = 0; i < userPasswordLength; i++){
             finalPassword += nchars[Math.floor(Math.random() * nchars.length)];
+            console.log("finalPassword", finalPassword);
         }
-    } else if (userCharacters === "s") {
+    } else if (userCharactersLower !== true && userCharactersUpper !== true && userCharactersNumber === true && userCharactersSpecial === true) {
         for (var i = 0; i < userPasswordLength; i++){
-        userPasswordLength += schars[Math.floor(Math.random() * schars.length)];
+            var joinedArray = nchars.concat(schars);
+            finalPassword += joinedArray[Math.floor(Math.random() * joinedArray.length)];
+            console.log("finalPassword", finalPassword);
         }
-    } else if (userCharacters === "m") {
+    } else if (userCharactersLower !== true && userCharactersUpper !== true && userCharactersNumber !== true && userCharactersSpecial === true) {
         for (var i = 0; i < userPasswordLength; i++){
-        userPasswordLength += mchars[Math.floor(Math.random() * mchars.length)];
+            finalPassword += schars[Math.floor(Math.random() * schars.length)];
+            console.log("finalPassword", finalPassword);
         }
     }    
 }
     
 // append the to the textarea? 
 function setPassword (){
-finalPassword.innerHTML = password
-document.getElementById("password").innerHTML = finalPassword;
+    document.getElementById("password").innerHTML = finalPassword;
 }
 
 // event listener for click on clipboard button

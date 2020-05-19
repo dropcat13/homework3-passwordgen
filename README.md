@@ -1,4 +1,4 @@
-# homework3-passwordgen
+# Password Generator
 
 ### User Story
 The user wants to generate a password, specifying its length and the type of characters. They are prompted to pick a number between 8 and 128 for the number of characters in the password, then are asked if they want lowercase, uppercase, numbers or special characters. If they pick a too short or too long password they are prompted to try again. similarly if they don't choose any character options they are also asked to pick again. 

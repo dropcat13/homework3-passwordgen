@@ -6,7 +6,7 @@ Once they user has chosen their requirements the password is generated and displ
 When the user clicks on the copy to clipboard option the file is copied to their computer or phone clipboard with an alert to let the user know what is happening. The password generator box is reset at this time, so a user could generate a new password and so their old password isn't left sitting around in full view. 
 
 ### Link to deployed webpage
- * [deployed webpage](https://dropcat13.github.io/homework3-passwordgen/)
+ * [Password Generator](https://dropcat13.github.io/passwordgenerator/)
 
 ### Link to screenshot of deployed website
  * [screenshot] (../screeshotPasswordGenerator)
